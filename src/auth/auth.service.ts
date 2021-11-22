@@ -28,12 +28,11 @@ export class AuthService {
     if (!foundedUser || (await !bcrypt.compare(foundedUser.pass, password)))
       return null
 
-    const { _id, email, createdAt } = foundedUser
+    const { _id, createdAt } = foundedUser
 
     return {
       _id,
       name: username,
-      email,
       createdAt,
     }
   }
@@ -74,6 +73,16 @@ export class AuthService {
 
     return {
       access_token: this.jwtService.sign({ name: nameOrEmail, sub }),
+    }
+  }
+
+  async auth(token: string): Promise<UserToReturn> {
+    const { _id, name, createdAt } = await this.jwtService.verifyAsync(token)
+
+    return {
+      _id,
+      name,
+      createdAt,
     }
   }
 }

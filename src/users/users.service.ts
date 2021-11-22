@@ -55,18 +55,17 @@ export class UsersService {
     if (!user)
       throw new BadRequestException('Cannot find user with specify name')
 
-    const { _id, email, createdAt } = user
+    const { _id, createdAt } = user
 
     return {
       _id,
       name,
-      email,
       createdAt,
     }
   }
 
   async create(user: CreateUserDto): Promise<boolean> {
-    const { name, email, pass } = user
+    const { name, pass } = user
 
     const isNameDontConflict = await this.UserModel.findOne({ name })
 
@@ -74,19 +73,15 @@ export class UsersService {
       throw new ConflictException('Username has already been taken')
 
     const passRegex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/
-    const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
 
     if (!pass.match(passRegex))
       throw new BadRequestException('Password does not match regex')
-    if (!email.match(emailRegex))
-      throw new BadRequestException('Email does not match regex')
 
     const saltRounds = 10
     const hash = await bcrypt.hash(pass, saltRounds)
 
     await this.UserModel.create({
       name,
-      email,
       pass: hash,
     } as User)
 
