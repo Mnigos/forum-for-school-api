@@ -9,7 +9,7 @@ export class PostApi extends Document {
   @Prop({ type: String, required: true })
   content: string
 
-  @Prop({ type: String, default: () => new Date() })
+  @Prop({ type: Date, default: () => new Date() })
   createdAt: Date
 }
 

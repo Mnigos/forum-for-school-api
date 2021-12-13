@@ -2,6 +2,7 @@ import { BadRequestException, HttpException, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 
+import { CreatePost } from './interfaces/createPost.interface'
 import { Post } from './interfaces/post.interface'
 import { PostDoc } from './interfaces/postDoc.interface'
 
@@ -25,7 +26,7 @@ export class PostsService {
     }
   }
 
-  async create(post: Omit<Post, '_id'>): Promise<boolean> {
+  async create(post: CreatePost): Promise<boolean> {
     try {
       await this.postsModel.create(post)
 
