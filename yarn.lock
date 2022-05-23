@@ -809,10 +809,10 @@
     "@types/jsonwebtoken" "8.5.4"
     jsonwebtoken "8.5.1"
 
-"@nestjs/mongoose@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/mongoose/-/mongoose-8.0.1.tgz#95d640bc746fdba04103a1e57a1ee3e3787ff0f1"
-  integrity sha512-L/115qDU5Jhw2LmyMiNsnf8jI7ajy8nJESCR13KKUpPuUc3nZiDJTrsLg0z5Zwa4FiawXzvPguWOb9/QW7wJtA==
+"@nestjs/mongoose@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/mongoose/-/mongoose-9.1.0.tgz#670a532ac56557d0abf1470b8ab95208fc00ce95"
+  integrity sha512-tkd5ZD7UYreHv/OaEcdgbsiwywmXuAwzcD3u/kGAGE8c4dyutkc09LxNGsp9q0+NdV0EK3NauICNLWspF7S+wA==
 
 "@nestjs/passport@^8.0.1":
   version "8.0.1"
